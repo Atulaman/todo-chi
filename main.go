@@ -53,7 +53,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		if t.Id == modtask.Id {
 			tasks[i].Desc = modtask.Desc
 			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusCreated)
+			w.WriteHeader(http.StatusOK)
 			json.NewEncoder(w).Encode(modtask)
 			return
 		}
@@ -73,7 +73,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 			tmp2 := tasks[i+1:]
 			tasks = append(tmp1, tmp2...)
 			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusCreated)
+			w.WriteHeader(http.StatusOK)
 			json.NewEncoder(w).Encode(map[string]string{"message": "Task deleted successfully"})
 			return
 		}
